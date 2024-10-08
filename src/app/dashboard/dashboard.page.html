@@ -34,14 +34,14 @@
 
     <div class="menu-row">
       <div class="menu-container">
-        <ng-container>
+        <ng-container *ngFor="let menu of listMenu">
           <div class="menu-card">
             <div class="menu-center">
               <div class="image-center">
-                <img src="assets/menu/Buletin.png">
+                <img [src]="menu.imageURL">
               </div>
               <div class="title-center">
-                <label class="menu-title">Senarai</label>
+                <label class="menu-title">{{ menu.title }}</label>
               </div>
             </div>
           </div>
