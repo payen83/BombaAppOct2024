@@ -47,32 +47,6 @@
           </div>
         </ng-container>
 
-        <ng-container>
-          <div class="menu-card">
-            <div class="menu-center">
-              <div class="image-center">
-                <img src="assets/menu/Carian.png">
-              </div>
-              <div class="title-center">
-                <label class="menu-title">Carian</label>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-
-        <ng-container>
-          <div class="menu-card">
-            <div class="menu-center">
-              <div class="image-center">
-                <img src="assets/menu/Dokumen.png">
-              </div>
-              <div class="title-center">
-                <label class="menu-title">Dokumen</label>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-
       </div>
     </div>
   </div>
@@ -83,16 +57,18 @@
       <label class="all">Semua</label>
     </div>
     <div class="bulletin-list-container">
-      <ng-container>
+
+      <ng-container *ngFor="let bulletin of listBulletin">
         <div class="bulletin-item">
           <div class="bulletin-image">
-            <img [src]="'assets/images/bulletin-default.png'">
+            <img [src]="bulletin.imageURL">
           </div>
           <div class="bulletin-title">
-            <label>Tajuk Berita</label>
+            <label>{{ bulletin.title }}</label>
           </div>
         </div>
       </ng-container>
+
     </div>
   </div>
   
