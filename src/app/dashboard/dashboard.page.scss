@@ -1,0 +1,78 @@
+ .header-toolbar {
+    margin: auto 15px;
+    display: flex;
+
+    .welcome-container {
+        width: calc(100% - 85px);
+        display: flex;
+        flex-direction: column;
+
+        .header-welcome {
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--theme-pure-white);
+        }
+        .header-name{
+            font-weight: bold;
+            margin-top: 5px;
+            font-size: 15px;
+            color: var(--theme-pure-white);
+        }
+        .header-company{
+            margin-top: 5px;
+            min-height: 15px;
+            font-size: 15px;
+            color: var(--theme-pure-white);
+        }
+    }
+ }
+
+ ion-toolbar {
+    --padding-top: 0;
+    --background: linear-gradient(0deg, rgba(255,0,0,1.0) 0%, rgba(255,0,0,0.6) 100%), no-repeat -35.965px -201.382px / 120.257% 340.128%;
+    --opacity: 1;
+    min-height: 160px;
+    display: flex;
+ }
+
+ ion-toolbar:last-of-type {
+    --border-width: 0;
+ }
+
+ .btn-container{
+    width: 85px;
+    display: flex;
+
+    .btn-center {
+        margin: auto;
+        display: flex;
+    }
+
+    .btn{
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        border: solid var(--theme-pure-white);
+        background-color: var(--theme-light-red);
+        display: flex;
+
+        ion-icon{
+            margin: auto;
+            font-size: 20px;
+            color: var(--theme-pure-black);
+        }
+
+    }
+
+    .btn:hover{
+        background-color: var(--theme-red);
+        
+        ion-icon{
+            color: var(--theme-pure-white);
+        }
+    }
+    .btn:last-child {
+        margin-left: 5px;
+    }
+ }

@@ -34,4 +34,11 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+// @import "@ionic/angular/css/palettes/dark.system.css";
+
+:root {
+    --theme-pure-white: #fff;
+    --theme-pure-black: #000;
+    --theme-light-red: #fc9c9c;
+    --theme-red: red;
+}
