@@ -1,0 +1,7 @@
+{
+  "name": "BombaApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
