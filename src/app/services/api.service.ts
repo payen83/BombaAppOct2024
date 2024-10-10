@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
-  private baseURL: string = 'http://localhost:8888/api';
+  public baseURL: string = 'http://localhost:8888/api';
   constructor(private httpClient: HttpClient) { }
 
   doGet(endpoint: string){

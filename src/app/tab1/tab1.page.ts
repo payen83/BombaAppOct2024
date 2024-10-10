@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { StorageService } from '../services/storage.service';
 import { Router } from '@angular/router';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-tab1',
@@ -25,6 +26,10 @@ export class Tab1Page{
       alert('Unauthorized. Please login first');
       this.router.navigateByUrl('/tabs');
     }
+  }
+
+  async doDownload(){
+    return await Browser.open({ url: this.api.baseURL + '/download?ic=' + this.ic });
   }
 
   async doSearch(){

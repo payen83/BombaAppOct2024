@@ -39,7 +39,7 @@
       <ion-label>Department: {{ staff.department }}</ion-label>
     </ion-item>
     <div class="ion-padding">
-      <ion-button expand="block" color="success"><ion-icon slot="start" name="document"></ion-icon>Export PDF</ion-button>
+      <ion-button expand="block" color="success" (click)="doDownload()"><ion-icon slot="start" name="document"></ion-icon>Export PDF</ion-button>
       <ion-button color="danger" expand="block" fill="clear" (click)="doReset()">Reset</ion-button>
     </div>
   </ion-list>
