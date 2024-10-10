@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from '../services/storage.service';
 
 interface Bulletin {
   title: string,
@@ -29,9 +30,26 @@ export class DashboardPage implements OnInit {
     { title: "Dokumen", imageURL:'assets/menu/Dokumen.png' }
   ];
 
-  constructor() { }
+  public staff: any = {
+    first_name: '',
+    last_name: '',
+    department: ''
+  };
+
+  constructor(private storageService: StorageService) { }
+
+  async ionViewDidEnter(){
+    // console.log('test');
+    let response: any = await this.storageService.getStorage('STAFF');
+    if(response){
+      this.staff = response;
+    }
+  }
 
   ngOnInit() {
+    this.storageService.observeLoginEvent().subscribe((data: any)=>{
+      this.staff = data.staff;
+    });
   }
 
 }

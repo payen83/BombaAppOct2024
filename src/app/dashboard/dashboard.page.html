@@ -4,9 +4,9 @@
       
       <div class="welcome-container">
         <label class="header-welcome">Selamat Datang</label>
-        <label class="header-name">Ferdy Fauzi</label>
+        <label class="header-name">{{ this.staff.first_name }} {{ this.staff.last_name }}</label>
         <ng-container>
-          <label class="header-company">Cawangan Putrajaya</label>
+          <label class="header-company">{{ this.staff.department }}</label>
         </ng-container>
       </div>
 
