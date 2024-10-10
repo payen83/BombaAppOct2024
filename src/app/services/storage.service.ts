@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
-import { Subject } from 'rxjs';
+import { first, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +23,13 @@ export class StorageService {
   
   async getStorage(key: string){
     return await this.storage.get(key);
+  }
+
+  async clearStorage(){
+    this.publishLoginEvent({ 
+        token: null, 
+        staff: {first_name: '', last_name: '', department: ''}
+      });
+    return await this.storage.clear();
   }
 }

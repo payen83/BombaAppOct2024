@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../services/storage.service';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 interface Bulletin {
   title: string,
@@ -36,7 +38,39 @@ export class DashboardPage implements OnInit {
     department: ''
   };
 
-  constructor(private storageService: StorageService) { }
+  public token: any = null;
+
+  constructor(
+    private router: Router,
+    private alertController: AlertController,
+    private storageService: StorageService) { }
+
+  goLogin(){
+    if(this.token){
+      this.alertConfirmation();
+    } else {
+      this.router.navigateByUrl('/login');
+    }
+  }
+
+  async alertConfirmation(){
+    const alert = await this.alertController.create({
+      header: 'Authentication',
+      message: 'Are you sure you want to logout?',
+      buttons: [
+        { text: 'Yes', handler: () => { this.doLogout(); } },
+        { text: 'No', handler: () => { return; } }
+      ]
+    });
+    return await alert.present();
+  }
+
+  async doLogout(){
+    await this.storageService.clearStorage();
+    this.router.navigateByUrl('/login');
+  }
+
+
 
   async ionViewDidEnter(){
     // console.log('test');
@@ -44,11 +78,16 @@ export class DashboardPage implements OnInit {
     if(response){
       this.staff = response;
     }
+    let response2: any = await this.storageService.getStorage('TOKEN');
+    if(response2){
+      this.token = response2;
+    }
   }
 
   ngOnInit() {
     this.storageService.observeLoginEvent().subscribe((data: any)=>{
       this.staff = data.staff;
+      this.token = data.token;
     });
   }
 

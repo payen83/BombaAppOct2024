@@ -15,8 +15,8 @@
           <button class="btn">
             <ion-icon name="notifications"></ion-icon>
           </button>
-          <button class="btn" routerLink="/login">
-            <ion-icon name="person"></ion-icon>
+          <button class="btn" (click)="goLogin()">
+            <ion-icon [name]="token ? 'log-out':'log-in' "></ion-icon>
           </button>
         </div>
       </div>
