@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'my.gov.jbpm.app',
   appName: 'BombaApp',
   webDir: 'www'
 };
