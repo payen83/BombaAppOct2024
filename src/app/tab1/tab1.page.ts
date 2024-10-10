@@ -1,16 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { StorageService } from '../services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page{
   public ic: string = '';
   public staff: any;
   public showResult: boolean = false;
-  constructor(private api: ApiService) {}
+  public token: any = null;
+  constructor(
+    private api: ApiService,
+    private storageService: StorageService,
+    private router: Router
+  ) {}
+  
+  async ionViewWillEnter() {
+    this.token = await this.storageService.getStorage('TOKEN');
+    if(!this.token){
+      alert('Unauthorized. Please login first');
+      this.router.navigateByUrl('/tabs');
+    }
+  }
 
   async doSearch(){
     try {
