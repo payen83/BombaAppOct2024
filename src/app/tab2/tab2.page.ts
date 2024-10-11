@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { ModalController } from '@ionic/angular';
 import { ModalComponent } from './modal/modal.component';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-tab2',
@@ -27,8 +28,10 @@ export class Tab2Page {
         showBackdrop: false
       });
       await modal.present();
-      const data = await modal.onWillDismiss();
-      this.QRText = JSON.stringify(data);
+      const response: any = await modal.onWillDismiss();
+      // this.QRText = JSON.stringify(data);
+      this.QRText = response.data.barcodes[0].displayValue;
+      Browser.open({ url: this.QRText });
     } else {
       alert('Please enable camera permission');
     }
